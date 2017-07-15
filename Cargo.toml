@@ -1,0 +1,6 @@
+[package]
+name = "popcarp"
+version = "0.1.0"
+authors = ["josh <josh@mulethief.com>"]
+
+[dependencies]
