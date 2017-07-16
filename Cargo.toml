@@ -4,3 +4,9 @@ version = "0.1.0"
 authors = ["josh <josh@mulethief.com>"]
 
 [dependencies]
+
+[dependencies.sdl2]
+version = "0.30"
+default-features = false
+features = ["ttf","image","mixer"]
+
