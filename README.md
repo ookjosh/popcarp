@@ -1,4 +1,4 @@
-PopCarp - Nothing to with soda or fish.
+PopCarp - Nothing to do with soda or fish.
 
 # Setting up SDL2 (mac)
 Use homebrew instructions [here](https://github.com/AngryLawyer/rust-sdl2)
@@ -16,6 +16,6 @@ Read the [book](https://doc.rust-lang.org/book/second-edition/ch01-01-installati
 1. Install Rust 
 2. cd to popcarp
 3. cargo build
-4. `./target/debug/popcarp`
+4. `./target/debug/popcarp` or `cargo run`
 
 Make sure you have your ENV variables set or things may not work...

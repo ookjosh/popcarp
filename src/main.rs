@@ -37,11 +37,26 @@ fn main() {
 
 	let mut angle = 0.0; // For example rotation.
 
+	let mut x_pos = 0;
+	let mut y_pos = 0;
+
 	'running: loop {
 		for event in event_pump.poll_iter() {
 			match event {
 				Event::Quit {..} | Event::KeyDown {keycode : Some(Keycode::Escape), .. } => {
 					break 'running
+				},
+				Event::KeyDown{keycode : Some(Keycode::Right), ..} => {
+					x_pos += 10;
+				},
+				Event::KeyDown{keycode : Some(Keycode::Left), ..} => {
+					x_pos -= 10;
+				},
+				Event::KeyDown{keycode : Some(Keycode::Up), ..} => {
+					y_pos -= 10;
+				},
+				Event::KeyDown{keycode : Some(Keycode::Down), ..} => {
+					y_pos += 10;
 				},
 				_ => {}
 			}
@@ -54,7 +69,8 @@ fn main() {
 		canvas.with_texture_canvas(&mut texture, |texture_canvas| {
 			texture_canvas.clear();
 			texture_canvas.set_draw_color(Color::RGBA(255, 0, 0, 255));
-			texture_canvas.fill_rect(Rect::new(0,0,400,300)).unwrap();
+			// Actually winds up changing widths at the moment.
+			texture_canvas.fill_rect(Rect::new(x_pos, y_pos, 400, 300)).unwrap();
 		}).unwrap();
 		canvas.set_draw_color(Color::RGBA(0,0,0,255));
 		let dest = Some(Rect::new(0,0,400,300));
@@ -64,7 +80,7 @@ fn main() {
 				None, // Source Rectangle or None for whole texture
 				dest, // Destination rectangle or None for whole target.
 				angle, // Rotation to be applied to dest
-				Some(Point::new(400,300)), // Point to rotate around
+				Some(Point::new(400, 300)), // Point to rotate around
 				false, // Flip (I think hflip, vflip)
 				false)
 			.unwrap();
